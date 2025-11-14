@@ -5,7 +5,7 @@ Un sitio web portfolio moderno con temática espacial desarrollado con Django + 
 ## 🌟 Características
 
 - **Temática Espacial**: Diseño con colores azul oscuro, lila y elementos futuristas
-- **Tono Amigable**: Inspirado en el portfolio de Charles Bruyerre
+- **Tono Amigable** (Inspirado en el portfolio de [Charles Bruyerre](https://itssharl.ee/))
 - **Tecnología Moderna**: Django + HTMX para interacciones dinámicas
 - **Responsive**: Adaptado para dispositivos móviles y desktop
 - **Glassmorphism**: Efectos de cristal y transparencias
