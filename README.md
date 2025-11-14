@@ -73,8 +73,8 @@ mai_portfolio/
 ## 🎨 Secciones del Portfolio
 
 ### 🏠 Inicio (Home)
-- Saludo amigable "Hola, Soy María Fernanda Ríos pero podés llamarme 'Mai'"
-- Imagen de perfil temática (astronauta)
+- Saludo amigable
+- Imagen de perfil temática: espacial /astronauta
 - Resumen profesional
 - Enlaces rápidos a otras secciones
 
@@ -87,7 +87,6 @@ mai_portfolio/
 ### 💼 Experiencia (Experience)
 - Timeline de experiencia laboral
 - Detalles de educación
-- Tecnologías utilizadas
 - Evolución profesional
 
 ### 🚀 Proyectos (Projects)
@@ -145,14 +144,6 @@ mai_portfolio/
 
 ## 🔧 Personalización
 
-### Actualizar Información Personal
-Editar el archivo `portfolio/views.py` para actualizar:
-- Información de contacto
-- Experiencia laboral
-- Educación
-- Proyectos
-- Habilidades
-
 ### Modificar Estilos
 - Colores: Variables CSS en `templates/portfolio/base.html`
 - Diseño: Archivos CSS en `portfolio/static/portfolio/css/`
@@ -164,43 +155,34 @@ Editar el archivo `portfolio/views.py` para actualizar:
 3. Agregar URL en `urls.py`
 4. Actualizar navegación en `base.html`
 
-## 🚀 Próximos Pasos / Mejoras Futuras
+## 🚀 Próximos Pasos
 
-- [ ] **Admin Django**: Panel de administración para actualizar contenido
-- [ ] **Base de Datos**: Modelos para proyectos y experiencias
 - [ ] **Blog**: Sección de artículos/posts
 - [ ] **Multiidioma**: Soporte para inglés y español
 - [ ] **SEO**: Meta tags y optimización
 - [ ] **Analytics**: Google Analytics integration
-- [ ] **Contact Form Backend**: Envío real de emails
 - [ ] **PWA**: Progressive Web App features
-- [ ] **Tests**: Unit tests y integration tests
-- [ ] **Docker**: Containerización para deployment
 
 ## 📝 Notas de Desarrollo
 
-- El proyecto utiliza SQLite como base de datos por defecto
 - Los archivos estáticos se sirven automáticamente en desarrollo
-- El formulario de contacto actualmente solo muestra un mensaje de confirmación
 - Las imágenes de fondo utilizan gradientes CSS para mejor rendimiento
 - La navegación conserva el estado activo usando template tags
 
 ## 📄 Licencia
 
 Este proyecto es de uso personal para el portfolio de María Fernanda Ríos.
+Puedes utilizarlo como template para crear el tuyo y adaptarlo a tu gusto.
 
 ## 👨‍💻 Desarrollado por
 
-**María Fernanda Ríos**  
-Python Developer | Data Science & AI  
+**María Fernanda Ríos**
+Python Developer | Data Science & AI bootcamp teacher
 Buenos Aires, Argentina
 
-- 📧 Email: mariafernandarios89@gmail.com
-- 📱 Teléfono: +54(11)7369-6010
-- 🌐 Portfolio: Este sitio web
-- 💼 LinkedIn: [Perfil de LinkedIn]
-- 🐙 GitHub: [Perfil de GitHub]
+- 💼 LinkedIn: [https://www.linkedin.com/in/mafernandar]
+- 🐙 GitHub: Acá estamos 😉
 
 ---
 
-¡Gracias por visitar mi portfolio! 🚀✨
+¡Gracias por visitar el Readme de mi portfolio! 🚀✨
