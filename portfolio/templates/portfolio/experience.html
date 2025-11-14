@@ -1,0 +1,164 @@
+{% extends 'portfolio/base.html' %}
+{% load portfolio_filters %}
+
+{% block content %}
+<section class="experience-section">
+    <!-- Header -->
+    <div class="glass-card" style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            <i class="fas fa-briefcase"></i> Mi Experiencia
+        </h1>
+        <p style="font-size: 1.2rem; color: var(--text-gray);">
+            Conocé mi trayectoria profesional y educación
+        </p>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="glass-card" style="margin-bottom: 2rem;">
+        <h2 style="color: var(--space-cyan); margin-bottom: 2rem; font-size: 1.8rem; text-align: center;">
+            <i class="fas fa-rocket"></i> Experiencia Laboral
+        </h2>
+        
+        <div class="timeline">
+            {% for job in work_experience %}
+            <div class="timeline-item" style="position: relative; padding: 1.5rem; margin-bottom: 2rem; background: var(--card-gradient); border-radius: 15px; border: 1px solid rgba(157, 78, 221, 0.3);">
+                <!-- Date badge -->
+                <div style="display: inline-block; background: var(--accent-gradient); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
+                    {{ job.period }}
+                </div>
+                
+                <!-- Job title and company -->
+                <h3 style="color: var(--space-pink); margin-bottom: 0.5rem; font-size: 1.3rem;">
+                    {{ job.title }}
+                </h3>
+                <h4 style="color: var(--space-cyan); margin-bottom: 1rem; font-size: 1.1rem;">
+                    {{ job.company }} - <span style="color: var(--text-gray); font-style: italic;">{{ job.type }}</span>
+                </h4>
+                
+                <!-- Description -->
+                <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">
+                    {{ job.description }}
+                </p>
+                
+                <!-- Technologies used -->
+                <div>
+                    <h5 style="color: var(--text-white); margin-bottom: 0.5rem; font-size: 0.9rem;">
+                        <i class="fas fa-tools"></i> Tecnologías utilizadas:
+                    </h5>
+                    <p style="color: var(--space-cyan); font-size: 0.9rem; font-style: italic;">
+                        {{ job.technologies }}
+                    </p>
+                </div>
+                
+                <!-- Decorative line -->
+                {% if not forloop.last %}
+                <div style="position: absolute; left: 50%; bottom: -1rem; width: 2px; height: 2rem; background: var(--accent-gradient); transform: translateX(-50%);"></div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Education -->
+    <div class="glass-card">
+        <h2 style="color: var(--space-pink); margin-bottom: 2rem; font-size: 1.8rem; text-align: center;">
+            <i class="fas fa-graduation-cap"></i> Educación
+        </h2>
+        
+        <div class="education-grid" style="display: grid; gap: 1.5rem;">
+            {% for edu in education %}
+            <div class="education-item" style="padding: 1.5rem; background: var(--card-gradient); border-radius: 15px; border: 1px solid rgba(0, 245, 255, 0.3);">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <h3 style="color: var(--space-cyan); margin-bottom: 0.5rem; font-size: 1.3rem;">
+                            {{ edu.title }}
+                        </h3>
+                        <h4 style="color: var(--space-pink); margin-bottom: 0.5rem; font-size: 1.1rem;">
+                            {{ edu.institution }}
+                        </h4>
+                    </div>
+                    <div style="background: rgba(0, 245, 255, 0.2); color: var(--space-cyan); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-left: 1rem;">
+                        {{ edu.period }}
+                    </div>
+                </div>
+                
+                <p style="color: var(--text-gray); line-height: 1.6; margin-bottom: 1rem;">
+                    {{ edu.description }}
+                </p>
+                
+                <!-- Technologies/Skills learned -->
+                <div>
+                    <h5 style="color: var(--text-white); margin-bottom: 0.5rem; font-size: 0.9rem;">
+                        <i class="fas fa-code"></i> Tecnologías principales:
+                    </h5>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                        {% for tech in edu.technologies|split:", " %}
+                        <span style="background: rgba(0, 245, 255, 0.2); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; color: var(--space-cyan);">
+                            {{ tech|trim }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Skills Timeline Summary -->
+    <div class="glass-card" style="margin-top: 2rem; text-align: center;">
+        <h2 style="color: var(--space-cyan); margin-bottom: 1.5rem; font-size: 1.5rem;">
+            <i class="fas fa-chart-line"></i> Mi Evolución Profesional
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            <div style="padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px;">
+                <h3 style="color: var(--space-pink); font-size: 1.2rem; margin-bottom: 0.5rem;">2021</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Inicio en desarrollo Full Stack</p>
+            </div>
+            
+            <div style="padding: 1rem; background: rgba(0, 245, 255, 0.1); border-radius: 15px;">
+                <h3 style="color: var(--space-cyan); font-size: 1.2rem; margin-bottom: 0.5rem;">2023</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Especialización en Data Science & AI</p>
+            </div>
+            
+            <div style="padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px;">
+                <h3 style="color: var(--space-pink); font-size: 1.2rem; margin-bottom: 0.5rem;">2024</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Docencia y mentoría en bootcamps</p>
+            </div>
+            
+            <div style="padding: 1rem; background: rgba(0, 245, 255, 0.1); border-radius: 15px;">
+                <h3 style="color: var(--space-cyan); font-size: 1.2rem; margin-bottom: 0.5rem;">2025</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Desarrollo de soluciones automatizadas</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem;">
+            <a href="{% url 'portfolio:projects' %}" class="space-btn" hx-get="{% url 'portfolio:projects' %}" hx-target="#main-content">
+                <i class="fas fa-code"></i> Ver mis proyectos
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (max-width: 768px) {
+        .experience-section h1 {
+            font-size: 2rem !important;
+        }
+        
+        .education-item div:first-child {
+            flex-direction: column !important;
+        }
+        
+        .education-item div:first-child > div:last-child {
+            margin-left: 0 !important;
+            margin-top: 0.5rem;
+            align-self: flex-start;
+        }
+        
+        .timeline-item::before {
+            display: none;
+        }
+    }
+</style>
+{% endblock %}

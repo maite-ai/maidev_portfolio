@@ -1,0 +1,198 @@
+{% extends 'portfolio/base.html' %}
+{% load portfolio_filters %}
+
+{% block content %}
+<section class="projects-section">
+    <!-- Header -->
+    <div class="glass-card" style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            <i class="fas fa-code"></i> Mis Proyectos
+        </h1>
+        <p style="font-size: 1.2rem; color: var(--text-gray);">
+            Explorá algunos de los proyectos que he desarrollado
+        </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid" style="display: grid; gap: 2rem; margin-bottom: 2rem;">
+        {% for project in projects %}
+        <div class="project-card glass-card" style="position: relative; overflow: hidden;">
+            <!-- Project header -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                    <h2 style="color: var(--space-cyan); margin-bottom: 0.5rem; font-size: 1.5rem;">
+                        <i class="fas fa-project-diagram"></i> {{ project.title }}
+                    </h2>
+                    <h3 style="color: var(--space-pink); margin-bottom: 0.5rem; font-size: 1.1rem;">
+                        {{ project.type }}
+                    </h3>
+                </div>
+                <div style="background: var(--accent-gradient); color: white; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-left: 1rem;">
+                    {{ project.period }}
+                </div>
+            </div>
+
+            <!-- Project description -->
+            <div style="margin-bottom: 1.5rem;">
+                <p style="color: var(--text-gray); line-height: 1.6; font-size: 1rem;">
+                    {{ project.description }}
+                </p>
+            </div>
+
+            <!-- Role -->
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="color: var(--text-white); margin-bottom: 0.5rem; font-size: 1rem;">
+                    <i class="fas fa-user-tie"></i> Mi rol:
+                </h4>
+                <p style="color: var(--space-cyan); font-weight: 600;">{{ project.role }}</p>
+            </div>
+
+            <!-- Technologies -->
+            <div style="margin-bottom: 2rem;">
+                <h4 style="color: var(--text-white); margin-bottom: 1rem; font-size: 1rem;">
+                    <i class="fas fa-tools"></i> Stack tecnológico:
+                </h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                    {% for tech in project.technologies|split:", " %}
+                    {% if forloop.counter0|divisibleby:2 %}
+                        <span style="background: rgba(157, 78, 221, 0.3); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; color: var(--text-white);">
+                            {{ tech|trim }}
+                        </span>
+                    {% else %}
+                        <span style="background: rgba(0, 245, 255, 0.3); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; color: var(--text-white);">
+                            {{ tech|trim }}
+                        </span>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Project highlights -->
+            {% if project.title == "Gameplay Video Auto Edit" %}
+            <div style="background: rgba(157, 78, 221, 0.1); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border-left: 3px solid var(--space-pink);">
+                <h4 style="color: var(--space-pink); margin-bottom: 0.5rem;">
+                    <i class="fas fa-star"></i> Destacado:
+                </h4>
+                <ul style="color: var(--text-gray); margin-left: 1rem;">
+                    <li>CNN especializada en detección de eventos de sonido</li>
+                    <li>Desarrollo completo en solo 9 días</li>
+                    <li>Coordinación de equipo usando metodologías ágiles</li>
+                    <li>Pipeline MLOps completo con Docker y GCP</li>
+                </ul>
+            </div>
+            {% elif project.title == "Peritroopers" %}
+            <div style="background: rgba(0, 245, 255, 0.1); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border-left: 3px solid var(--space-cyan);">
+                <h4 style="color: var(--space-cyan); margin-bottom: 0.5rem;">
+                    <i class="fas fa-star"></i> Destacado:
+                </h4>
+                <ul style="color: var(--text-gray); margin-left: 1rem;">
+                    <li>E-commerce completo con carrito de compras</li>
+                    <li>Desarrollo en 8 sprints con metodología Scrum</li>
+                    <li>Liderazgo de equipo multidisciplinario</li>
+                    <li>Stack MERN con funcionalidades avanzadas</li>
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- Action buttons -->
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                {% if project.title == "Gameplay Video Auto Edit" %}
+                <button class="space-btn" style="background: rgba(157, 78, 221, 0.8); cursor: not-allowed;">
+                    <i class="fas fa-eye"></i> Demo privado
+                </button>
+                <button class="space-btn" style="background: rgba(0, 245, 255, 0.8); cursor: not-allowed;">
+                    <i class="fab fa-github"></i> Repo privado
+                </button>
+                {% else %}
+                <button class="space-btn" style="background: rgba(0, 245, 255, 0.8); cursor: not-allowed;">
+                    <i class="fas fa-eye"></i> Demo disponible
+                </button>
+                <button class="space-btn" style="background: rgba(157, 78, 221, 0.8); cursor: not-allowed;">
+                    <i class="fab fa-github"></i> Ver código
+                </button>
+                {% endif %}
+            </div>
+
+            <!-- Decorative elements -->
+            <div style="position: absolute; top: -50px; right: -50px; width: 100px; height: 100px; background: var(--accent-gradient); border-radius: 50%; opacity: 0.1; pointer-events: none;"></div>
+            <div style="position: absolute; bottom: -30px; left: -30px; width: 60px; height: 60px; background: rgba(0, 245, 255, 0.3); border-radius: 50%; opacity: 0.3; pointer-events: none;"></div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Additional Projects Section -->
+    <div class="glass-card" style="text-align: center;">
+        <h2 style="color: var(--space-pink); margin-bottom: 1rem; font-size: 1.5rem;">
+            <i class="fas fa-plus-circle"></i> ¿Querés ver más proyectos?
+        </h2>
+        <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.6;">
+            Estos son algunos de mis proyectos más destacados, pero tengo más trabajos y contribuciones en mi GitHub. 
+            También estoy siempre trabajando en nuevos proyectos interesantes.
+        </p>
+        
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="#" class="space-btn" style="background: rgba(0, 245, 255, 0.8);">
+                <i class="fab fa-github"></i> Ver GitHub completo
+            </a>
+            <a href="{% url 'portfolio:contact' %}" class="space-btn" hx-get="{% url 'portfolio:contact' %}" hx-target="#main-content">
+                <i class="fas fa-handshake"></i> Colaboremos
+            </a>
+        </div>
+    </div>
+
+    <!-- Skills developed through projects -->
+    <div class="glass-card" style="margin-top: 2rem;">
+        <h2 style="color: var(--space-cyan); margin-bottom: 1.5rem; font-size: 1.5rem; text-align: center;">
+            <i class="fas fa-brain"></i> Habilidades Desarrolladas
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <div style="text-align: center; padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px;">
+                <i class="fas fa-users" style="font-size: 2rem; color: var(--space-pink); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--space-pink); margin-bottom: 0.5rem;">Liderazgo de Equipo</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Coordinación y organización de equipos multidisciplinarios</p>
+            </div>
+            
+            <div style="text-align: center; padding: 1rem; background: rgba(0, 245, 255, 0.1); border-radius: 15px;">
+                <i class="fas fa-cogs" style="font-size: 2rem; color: var(--space-cyan); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--space-cyan); margin-bottom: 0.5rem;">MLOps</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Implementación y despliegue de modelos ML en producción</p>
+            </div>
+            
+            <div style="text-align: center; padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px;">
+                <i class="fas fa-clock" style="font-size: 2rem; color: var(--space-pink); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--space-pink); margin-bottom: 0.5rem;">Desarrollo Ágil</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Scrum, Kanban y entrega incremental de valor</p>
+            </div>
+            
+            <div style="text-align: center; padding: 1rem; background: rgba(0, 245, 255, 0.1); border-radius: 15px;">
+                <i class="fas fa-lightbulb" style="font-size: 2rem; color: var(--space-cyan); margin-bottom: 1rem;"></i>
+                <h3 style="color: var(--space-cyan); margin-bottom: 0.5rem;">Innovación</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Soluciones creativas para problemas complejos</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (max-width: 768px) {
+        .projects-section h1 {
+            font-size: 2rem !important;
+        }
+        
+        .project-card {
+            margin-bottom: 1rem;
+        }
+        
+        .project-card div:first-child {
+            flex-direction: column !important;
+        }
+        
+        .project-card div:first-child > div:last-child {
+            margin-left: 0 !important;
+            margin-top: 0.5rem;
+            align-self: flex-start;
+        }
+    }
+</style>
+{% endblock %}
