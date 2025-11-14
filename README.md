@@ -14,20 +14,28 @@ Un sitio web portfolio moderno con temática espacial desarrollado con Django + 
 ## 🚀 Instalación y Configuración
 
 ### Prerrequisitos
-- Python 3.8+
-- pip
+- Python 3.12.9
+- pip (actualizado)
 
 ### Pasos de Instalación
 
 1. **Crear entorno virtual** (recomendado):
+
+- Usando *venv*:
 ```bash
 python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
+venv\Scripts\activate # o en Linux: source venv/bin/activate
 ```
 
-2. **Instalar dependencias**:
+- Usando *pyenv-virtualenv*:
 ```bash
-pip install django
+pyenv virtualenv 3.12.9 portfolio
+pyenv local portfolio
+```
+
+2. **Instalar Django y dependencias**:
+```bash
+pip install -r requirements.txt
 ```
 
 3. **Ejecutar migraciones**:
@@ -45,8 +53,8 @@ python manage.py runserver
 ## 📁 Estructura del Proyecto
 
 ```
-mai_portfolio/
-├── mai_portfolio/          # Configuración del proyecto
+mai_portfolio/              # Raíz del repositorio
+├── config/                 # Configuración del proyecto
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
@@ -158,10 +166,9 @@ mai_portfolio/
 ## 🚀 Próximos Pasos
 
 - [ ] **Blog**: Sección de artículos/posts
-- [ ] **Multiidioma**: Soporte para inglés y español
+- [ ] **Multiidioma**: Soporte para switchear entre inglés y español
 - [ ] **SEO**: Meta tags y optimización
 - [ ] **Analytics**: Google Analytics integration
-- [ ] **PWA**: Progressive Web App features
 
 ## 📝 Notas de Desarrollo
 
@@ -172,16 +179,16 @@ mai_portfolio/
 ## 📄 Licencia
 
 Este proyecto es de uso personal para el portfolio de María Fernanda Ríos.
-Puedes utilizarlo como template para crear el tuyo y adaptarlo a tu gusto.
+Puedes utilizarlo como *template* para crear el tuyo y adaptarlo a tu gusto con tu estilo.
 
 ## 👨‍💻 Desarrollado por
+- **Claude Sonnet 4** (Web)
 
-**María Fernanda Ríos**
-Python Developer | Data Science & AI bootcamp teacher
-Buenos Aires, Argentina
+- **María Fernanda Ríos** (Ajustes)
 
-- 💼 LinkedIn: [https://www.linkedin.com/in/mafernandar]
-- 🐙 GitHub: Acá estamos 😉
+## 👨‍💻 Contacto
+- 💼 [Mi perfil en LinkedIn](https://www.linkedin.com/in/mafernandar)
+- 🐙 GitHub: Aquí mismo 😉
 
 ---
 
