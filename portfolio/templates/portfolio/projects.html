@@ -74,10 +74,11 @@
                     <i class="fas fa-star"></i> Destacado:
                 </h4>
                 <ul style="color: var(--text-gray); margin-left: 1rem;">
-                    <li>CNN especializada en detección de eventos de sonido</li>
+                    <li>Enfocado en ahorrar el tiempo de edición para creadores de contenidos de Gameplay</li>
+                    <li>Modelo de CNN especializado en detección de eventos de sonido</li>
                     <li>Desarrollo completo en solo 9 días</li>
                     <li>Coordinación de equipo usando metodologías ágiles</li>
-                    <li>Pipeline MLOps completo con Docker y GCP</li>
+                    <li>Pipeline MLOps completo con FastAPI, Docker, GCP y Streamlit</li>
                 </ul>
             </div>
             {% elif project.title == "Peritroopers" %}
@@ -97,19 +98,17 @@
             <!-- Action buttons -->
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                 {% if project.title == "Gameplay Video Auto Edit" %}
-                <button class="space-btn" style="background: rgba(157, 78, 221, 0.8); cursor: not-allowed;">
-                    <i class="fas fa-eye"></i> Demo privado
-                </button>
-                <button class="space-btn" style="background: rgba(0, 245, 255, 0.8); cursor: not-allowed;">
-                    <i class="fab fa-github"></i> Repo privado
-                </button>
+                <a href="https://www.youtube.com/live/O_BTkXAFKAw?si=xgfVxUYooowkvN4f&t=2469", target="_blank"><button class="space-btn" style="background: rgba(157, 78, 221, 0.8);">
+                    <i class="fas fa-eye"></i> Presentación en Demo Day
+                </button></a>
+                <a href="https://github.com/maite-ai/auto-edit-v1.0", target="_blank"><button class="space-btn" style="background: rgba(0, 245, 255, 0.8);">
+                    <i class="fab fa-github"></i> Ver código en repo
+                </button></a>
+
                 {% else %}
-                <button class="space-btn" style="background: rgba(0, 245, 255, 0.8); cursor: not-allowed;">
-                    <i class="fas fa-eye"></i> Demo disponible
-                </button>
-                <button class="space-btn" style="background: rgba(157, 78, 221, 0.8); cursor: not-allowed;">
-                    <i class="fab fa-github"></i> Ver código
-                </button>
+                <a href="https://github.com/maite-ai/grupo3-peritroopers-sprint8", target="_blank"><button class="space-btn" style="background: rgba(157, 78, 221, 0.8)">
+                    <i class="fab fa-github"></i> Ver código en repo
+                </button></a>
                 {% endif %}
             </div>
 
@@ -126,16 +125,13 @@
             <i class="fas fa-plus-circle"></i> ¿Querés ver más proyectos?
         </h2>
         <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.6;">
-            Estos son algunos de mis proyectos más destacados, pero tengo más trabajos y contribuciones en mi GitHub. 
-            También estoy siempre trabajando en nuevos proyectos interesantes.
+            Estos son algunos de mis trabajos académicos. Pero también existen repositorios
+            de contribuciones personales o de hobbie. Los repositorios relacionados a empresas están en privado.
         </p>
-        
+
         <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
             <a href="#" class="space-btn" style="background: rgba(0, 245, 255, 0.8);">
-                <i class="fab fa-github"></i> Ver GitHub completo
-            </a>
-            <a href="{% url 'portfolio:contact' %}" class="space-btn" hx-get="{% url 'portfolio:contact' %}" hx-target="#main-content">
-                <i class="fas fa-handshake"></i> Colaboremos
+                <i class="fab fa-github"></i> Te invito a mi perfil de GitHub
             </a>
         </div>
     </div>
@@ -145,26 +141,26 @@
         <h2 style="color: var(--space-cyan); margin-bottom: 1.5rem; font-size: 1.5rem; text-align: center;">
             <i class="fas fa-brain"></i> Habilidades Desarrolladas
         </h2>
-        
+
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
             <div style="text-align: center; padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px;">
                 <i class="fas fa-users" style="font-size: 2rem; color: var(--space-pink); margin-bottom: 1rem;"></i>
                 <h3 style="color: var(--space-pink); margin-bottom: 0.5rem;">Liderazgo de Equipo</h3>
                 <p style="color: var(--text-gray); font-size: 0.9rem;">Coordinación y organización de equipos multidisciplinarios</p>
             </div>
-            
+
             <div style="text-align: center; padding: 1rem; background: rgba(0, 245, 255, 0.1); border-radius: 15px;">
                 <i class="fas fa-cogs" style="font-size: 2rem; color: var(--space-cyan); margin-bottom: 1rem;"></i>
                 <h3 style="color: var(--space-cyan); margin-bottom: 0.5rem;">MLOps</h3>
                 <p style="color: var(--text-gray); font-size: 0.9rem;">Implementación y despliegue de modelos ML en producción</p>
             </div>
-            
+
             <div style="text-align: center; padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px;">
                 <i class="fas fa-clock" style="font-size: 2rem; color: var(--space-pink); margin-bottom: 1rem;"></i>
                 <h3 style="color: var(--space-pink); margin-bottom: 0.5rem;">Desarrollo Ágil</h3>
                 <p style="color: var(--text-gray); font-size: 0.9rem;">Scrum, Kanban y entrega incremental de valor</p>
             </div>
-            
+
             <div style="text-align: center; padding: 1rem; background: rgba(0, 245, 255, 0.1); border-radius: 15px;">
                 <i class="fas fa-lightbulb" style="font-size: 2rem; color: var(--space-cyan); margin-bottom: 1rem;"></i>
                 <h3 style="color: var(--space-cyan); margin-bottom: 0.5rem;">Innovación</h3>
@@ -179,15 +175,15 @@
         .projects-section h1 {
             font-size: 2rem !important;
         }
-        
+
         .project-card {
             margin-bottom: 1rem;
         }
-        
+
         .project-card div:first-child {
             flex-direction: column !important;
         }
-        
+
         .project-card div:first-child > div:last-child {
             margin-left: 0 !important;
             margin-top: 0.5rem;
