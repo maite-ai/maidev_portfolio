@@ -8,18 +8,18 @@
             <i class="fas fa-envelope-open"></i> ¡Hablemos!
         </h1>
         <p style="font-size: 1.2rem; color: var(--text-gray);">
-            ¿Tenés un proyecto en mente? Me encantaría escuchar sobre él
+            ¿Tenés un proyecto? Me encantaría saber sobre él
         </p>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
-        
+
         <!-- Contact Information -->
         <div class="glass-card">
             <h2 style="color: var(--space-cyan); margin-bottom: 1.5rem; font-size: 1.5rem; text-align: center;">
                 <i class="fas fa-address-card"></i> Información de Contacto
             </h2>
-            
+
             <div style="display: grid; gap: 1.5rem;">
                 <!-- Email -->
                 <div style="display: flex; align-items: center; padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px; transition: all 0.3s ease;">
@@ -35,29 +35,27 @@
                     </div>
                 </div>
 
-                <!-- Phone -->
-                <div style="display: flex; align-items: center; padding: 1rem; background: rgba(0, 245, 255, 0.1); border-radius: 15px; transition: all 0.3s ease;">
-                    <div style="background: rgba(0, 245, 255, 0.8); padding: 0.8rem; border-radius: 50%; margin-right: 1rem;">
-                        <i class="fas fa-phone" style="color: white; font-size: 1.2rem;"></i>
-                    </div>
-                    <div>
-                        <h3 style="color: var(--space-cyan); margin-bottom: 0.3rem; font-size: 1rem;">Teléfono</h3>
-                        <p style="color: var(--text-gray); font-size: 0.9rem;">{{ contact_info.phone }}</p>
-                        <a href="tel:{{ contact_info.phone }}" style="color: var(--space-pink); text-decoration: none; font-size: 0.8rem;">
-                            Llamar →
-                        </a>
-                    </div>
-                </div>
-
                 <!-- Location -->
                 <div style="display: flex; align-items: center; padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px; transition: all 0.3s ease;">
-                    <div style="background: rgba(157, 78, 221, 0.8); padding: 0.8rem; border-radius: 50%; margin-right: 1rem;">
+                    <div style="background:  rgba(0, 245, 255, 0.8); padding: 0.8rem; border-radius: 50%; margin-right: 1rem;">
                         <i class="fas fa-map-marker-alt" style="color: white; font-size: 1.2rem;"></i>
                     </div>
                     <div>
                         <h3 style="color: var(--space-pink); margin-bottom: 0.3rem; font-size: 1rem;">Ubicación</h3>
                         <p style="color: var(--text-gray); font-size: 0.9rem;">{{ contact_info.location }}</p>
-                        <p style="color: var(--space-cyan); font-size: 0.8rem;">Disponible para trabajo remoto</p>
+                        <p style="color: var(--space-cyan); font-size: 0.8rem;">Disponible para trabajo presencial, híbrido o remoto</p>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div style="display: flex; align-items: center; padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px; transition: all 0.3s ease;">
+                    <div style="background:  rgba(157, 78, 221, 0.8); padding: 0.8rem; border-radius: 50%; margin-right: 1rem;">
+                        <i class="fas fa-comment-dollar" style="color: white; font-size: 1.2rem;"></i>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--space-pink); margin-bottom: 0.3rem; font-size: 1rem;">Remuneración</h3>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Flexible</p>
+                        <p style="color: var(--space-cyan); font-size: 0.8rem;">Por favor, consultar →</p>
                     </div>
                 </div>
 
@@ -79,29 +77,29 @@
         <!-- Contact Form -->
         <div class="glass-card">
             <h2 style="color: var(--space-pink); margin-bottom: 1.5rem; font-size: 1.5rem; text-align: center;">
-                <i class="fas fa-paper-plane"></i> Envíame un Mensaje
+                <i class="fas fa-paper-plane"></i> O podés dejarme un mensaje...
             </h2>
-            
+
             <form hx-post="{% url 'portfolio:contact' %}" hx-target="#form-response" style="display: grid; gap: 1rem;">
                 {% csrf_token %}
-                
+
                 <div>
-                    <label style="color: var(--text-white); margin-bottom: 0.5rem; display: block; font-weight: 600;">Nombre</label>
-                    <input type="text" name="name" required 
+                    <label style="color: var(--text-white); margin-bottom: 0.5rem; display: block; font-weight: 600;">Tu nombre</label>
+                    <input type="text" name="name" required
                            style="width: 100%; padding: 0.8rem; background: rgba(26, 26, 64, 0.5); border: 1px solid rgba(157, 78, 221, 0.3); border-radius: 10px; color: var(--text-white); font-family: inherit;"
                            placeholder="Tu nombre completo">
                 </div>
-                
+
                 <div>
-                    <label style="color: var(--text-white); margin-bottom: 0.5rem; display: block; font-weight: 600;">Email</label>
-                    <input type="email" name="email" required 
+                    <label style="color: var(--text-white); margin-bottom: 0.5rem; display: block; font-weight: 600;">Tu e-mail</label>
+                    <input type="email" name="email" required
                            style="width: 100%; padding: 0.8rem; background: rgba(26, 26, 64, 0.5); border: 1px solid rgba(157, 78, 221, 0.3); border-radius: 10px; color: var(--text-white); font-family: inherit;"
                            placeholder="tu@email.com">
                 </div>
-                
+
                 <div>
-                    <label style="color: var(--text-white); margin-bottom: 0.5rem; display: block; font-weight: 600;">Asunto</label>
-                    <select name="subject" required 
+                    <label style="color: var(--text-white); margin-bottom: 0.5rem; display: block; font-weight: 600;">¿Cuál es el motivo?</label>
+                    <select name="subject" required
                             style="width: 100%; padding: 0.8rem; background: rgba(26, 26, 64, 0.5); border: 1px solid rgba(157, 78, 221, 0.3); border-radius: 10px; color: var(--text-white); font-family: inherit;">
                         <option value="">Seleccioná un tema</option>
                         <option value="proyecto">Consulta sobre proyecto</option>
@@ -111,22 +109,22 @@
                         <option value="otro">Otro</option>
                     </select>
                 </div>
-                
+
                 <div>
-                    <label style="color: var(--text-white); margin-bottom: 0.5rem; display: block; font-weight: 600;">Mensaje</label>
-                    <textarea name="message" rows="5" required 
+                    <label style="color: var(--text-white); margin-bottom: 0.5rem; display: block; font-weight: 600;">Tu mensaje</label>
+                    <textarea name="message" rows="5" required
                               style="width: 100%; padding: 0.8rem; background: rgba(26, 26, 64, 0.5); border: 1px solid rgba(157, 78, 221, 0.3); border-radius: 10px; color: var(--text-white); font-family: inherit; resize: vertical;"
                               placeholder="Contame sobre tu proyecto, idea o consulta..."></textarea>
                 </div>
-                
+
                 <button type="submit" class="space-btn" style="justify-self: center; padding: 1rem 2rem; font-size: 1rem;">
-                    <i class="fas fa-rocket"></i> Enviar mensaje
+                    <i class="fas fa-rocket"></i> Enviar
                     <span class="htmx-indicator" style="margin-left: 0.5rem;">
                         <i class="fas fa-spinner fa-spin"></i>
                     </span>
                 </button>
             </form>
-            
+
             <div id="form-response" style="margin-top: 1rem;"></div>
         </div>
     </div>
@@ -136,35 +134,35 @@
         <h2 style="color: var(--space-cyan); margin-bottom: 1rem; font-size: 1.5rem;">
             <i class="fas fa-calendar-check"></i> Disponibilidad
         </h2>
-        
+
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
             <div style="padding: 1rem; background: rgba(0, 245, 255, 0.1); border-radius: 15px;">
                 <i class="fas fa-briefcase" style="font-size: 2rem; color: var(--space-cyan); margin-bottom: 0.5rem;"></i>
-                <h3 style="color: var(--space-cyan); margin-bottom: 0.5rem;">Proyectos Freelance</h3>
-                <p style="color: var(--text-gray); font-size: 0.9rem;">Disponible para proyectos de desarrollo Python</p>
+                <h3 style="color: var(--space-cyan); margin-bottom: 0.5rem;">Formato independiente</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Disponible para proyectos en modalidad Freelance o Contractor</p>
             </div>
-            
+
             <div style="padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px;">
                 <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--space-pink); margin-bottom: 0.5rem;"></i>
                 <h3 style="color: var(--space-pink); margin-bottom: 0.5rem;">Mentoría & Teaching</h3>
-                <p style="color: var(--text-gray); font-size: 0.9rem;">Sesiones de mentoría en Data Science & Python</p>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Sesiones de mentoría, workshops, tutoriales</p>
             </div>
-            
+
             <div style="padding: 1rem; background: rgba(0, 245, 255, 0.1); border-radius: 15px;">
                 <i class="fas fa-handshake" style="font-size: 2rem; color: var(--space-cyan); margin-bottom: 0.5rem;"></i>
                 <h3 style="color: var(--space-cyan); margin-bottom: 0.5rem;">Colaboraciones</h3>
                 <p style="color: var(--text-gray); font-size: 0.9rem;">Abierta a colaborar en proyectos interesantes</p>
             </div>
-            
+
             <div style="padding: 1rem; background: rgba(157, 78, 221, 0.1); border-radius: 15px;">
                 <i class="fas fa-users" style="font-size: 2rem; color: var(--space-pink); margin-bottom: 0.5rem;"></i>
-                <h3 style="color: var(--space-pink); margin-bottom: 0.5rem;">Trabajo en Equipo</h3>
-                <p style="color: var(--text-gray); font-size: 0.9rem;">Interesada en posiciones full-time remotas</p>
+                <h3 style="color: var(--space-pink); margin-bottom: 0.5rem;">Relación de dependencia</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Interesada en posiciones full-time o part-time</p>
             </div>
         </div>
-        
+
         <p style="color: var(--text-gray); margin-top: 2rem; font-style: italic;">
-            <i class="fas fa-clock"></i> Tiempo de respuesta promedio: 24 horas
+            <i class="fas fa-clock"></i> Tiempo de respuesta promedio: 24 a 48 horas
         </p>
     </div>
 </section>
@@ -176,24 +174,24 @@
         border-color: var(--space-cyan) !important;
         box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
     }
-    
+
     /* Hover effects for contact cards */
     .contact-section .glass-card > div > div:hover {
         background: rgba(157, 78, 221, 0.2) !important;
         transform: translateY(-2px);
     }
-    
+
     /* Social links hover */
     .contact-section a[title]:hover {
         transform: translateY(-3px) scale(1.1);
         box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
     }
-    
+
     @media (max-width: 768px) {
         .contact-section h1 {
             font-size: 2rem !important;
         }
-        
+
         .contact-section > div:first-child {
             grid-template-columns: 1fr !important;
         }
