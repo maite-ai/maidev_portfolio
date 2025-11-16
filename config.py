@@ -4,9 +4,7 @@
 NOMBRE_COMPLETO = "María Fernanda Ríos"
 NICKNAME = "Mai"
 PROFESION = "Python Developer"
-UBICACION = "Buenos Aires, Argentina"
-EMAIL = "mariafernandarios89@gmail.com"
-TELEFONO = "+54(11)7369-6010"
+UBICACION = "Ciudad Autónoma de Buenos Aires, Argentina"
 
 ## Configuración del Sitio
 SITE_NAME = "Mai.dev"
