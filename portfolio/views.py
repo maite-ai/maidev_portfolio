@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
+import logging
+
+logger = logging.getLogger(__name__)
 
 def home(request):
     """Home page with hero section and overview"""
@@ -8,11 +13,9 @@ def home(request):
         'nickname': 'Mai',
         'title': 'Python Developer | Data Science & AI teacher',
         'summary': 'Experienced Python Developer that builds useful company\'s solutions with Python and Data Processing. Strong background in Object Oriented Programming and Web Development.',
-        'location': 'Ciudad Autónoma de Buenos Aires, Argentina',
-        'email': 'mariafernandarios89@gmail.com',
-        'phone': '+54(11)7369-6010'
+        'location': 'Ciudad Autónoma de Buenos Aires, Argentina'
     }
-    return render(request, 'portfolio/home.html', context)
+    return render(request, 'public/home.html', context)
 
 def about(request):
     """About section with detailed information"""
@@ -36,7 +39,7 @@ def about(request):
             {'name': 'English', 'level': 'C1'}
         ]
     }
-    return render(request, 'portfolio/about.html', context)
+    return render(request, 'public/about.html', context)
 
 def experience(request):
     """Experience and education section"""
@@ -91,7 +94,7 @@ def experience(request):
             }
         ]
     }
-    return render(request, 'portfolio/experience.html', context)
+    return render(request, 'public/experience.html', context)
 
 def projects(request):
     """Projects showcase section"""
@@ -115,34 +118,79 @@ def projects(request):
             }
         ]
     }
-    return render(request, 'portfolio/projects.html', context)
+    return render(request, 'public/projects.html', context)
 
 def contact(request):
     """Contact information and form"""
     if request.method == 'POST':
         # Handle form submission
-        name = request.POST.get('name', '')
-        email = request.POST.get('email', '')
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
         subject = request.POST.get('subject', '')
-        message = request.POST.get('message', '')
+        message = request.POST.get('message', '').strip()
 
-        # Here you could add email sending functionality
-        # For now, just return a success message
-        success_message = f"""
-        <div style="background: rgba(0, 245, 255, 0.1); border: 1px solid rgba(0, 245, 255, 0.3); padding: 1rem; border-radius: 10px; text-align: center;">
-            <i class="fas fa-check-circle" style="color: var(--space-cyan); margin-right: 0.5rem;"></i>
-            <span style="color: var(--space-cyan);">¡Gracias {name}! Tu mensaje ha sido enviado. Te contactaré pronto.</span>
-        </div>
-        """
-        return HttpResponse(success_message)
+        if name and email and subject and message:
+            try:
+                # Prepare email content
+                email_subject = f"Nuevo mensaje de {name} - {subject}"
+                email_message = f"""
+Nuevo mensaje desde tu portfolio:
+
+👤 Nombre: {name.capitalize()}
+📧 Email: {email}
+📋 Asunto: {subject}
+
+💬 Mensaje:
+{message}
+
+-------------
+Enviado desde yosoymai.vercel.app
+                """
+
+                # Send email
+                send_mail(
+                    subject=email_subject,
+                    message=email_message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.EMAIL_HOST_USER],
+                    fail_silently=False,
+                )
+
+                # Success response
+                success_message = f"""
+                <div style="background: rgba(0, 245, 255, 0.1); border: 1px solid rgba(0, 245, 255, 0.3); padding: 1rem; border-radius: 10px; text-align: center;">
+                    <i class="fas fa-check-circle" style="color: var(--space-cyan); margin-right: 0.5rem;"></i>
+                    <span style="color: var(--space-cyan);">¡Gracias {name}! Tu mensaje ha sido enviado. Te contactaré pronto.</span>
+                </div>
+                """
+                return HttpResponse(success_message)
+            except Exception as e:
+                logger.error(f"Error sending email: {str(e)}")
+                error_message = """
+                <div style="background: rgba(255, 78, 78, 0.1); border: 1px solid rgba(255, 78, 78, 0.3); padding: 1rem; border-radius: 10px; text-align: center;">
+                    <i class="fas fa-exclamation-triangle" style="color: #ff4e4e; margin-right: 0.5rem; font-size: 1.2rem;"></i>
+                    <span style="color: #ff4e4e; font-weight: 600;">Ups! Algo salió mal 😅</span><br>
+                    <span style="color: var(--text-gray); font-size: 0.9rem;">Por favor intenta enviándome un email directo a mariafernandarios89@gmail.com</span>
+                </div>
+                """
+                return HttpResponse(error_message)
+        else:
+            # Validation error
+            error_message = """
+            <div style="background: rgba(255, 195, 0, 0.1); border: 1px solid rgba(255, 195, 0, 0.3); padding: 1rem; border-radius: 10px; text-align: center;">
+                <i class="fas fa-info-circle" style="color: #ffc300; margin-right: 0.5rem; font-size: 1.2rem;"></i>
+                <span style="color: #ffc300; font-weight: 600;">Por favor completá todos los campos</span>
+            </div>
+            """
+            return HttpResponse(error_message)
 
     context = {
         'contact_info': {
             'email': 'mariafernandarios89@gmail.com',
             'phone': '888888',
             'location': 'Ciudad Autónoma de Buenos Aires, Argentina',
-            'github': 'https://github.com/maite-ai',
-            'linkedin': 'https://www.linkedin.com/in/mafernandar'
+            'github': 'Perfil de GitHub',
+            'linkedin': 'Perfil de LinkedIn'
         }
     }
-    return render(request, 'portfolio/contact.html', context)
+    return render(request, 'public/contact.html', context)

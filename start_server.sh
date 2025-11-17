@@ -5,14 +5,17 @@ echo "=================================================="
 echo ""
 
 # Check if virtual environment exists
-if [ ! -d "venv" ]; then
-    echo "📦 Creando entorno virtual..."
-    python3 -m venv venv
+VIRTUALENV="portfolio"
+if [ -d "$HOME/.pyenv/versions/$VIRTUALENV" ]; then
+  echo "El entorno virtual '$VIRTUALENV' existe"
+else
+  echo "📦 Creando entorno virtual..."
+  pyenv virtualenv 3.12.9 mai-portfolio
 fi
 
 # Activate virtual environment
 echo "⚡ Activando entorno virtual..."
-source venv/bin/activate
+pyenv local portfolio
 
 # Install dependencies
 echo "📥 Instalando dependencias..."
@@ -29,9 +32,9 @@ python manage.py collectstatic --noinput
 echo ""
 echo "✨ ¡Todo listo! El servidor se iniciará en http://127.0.0.1:8000/"
 echo ""
-echo "🚀 Iniciando servidor de desarrollo..."
-echo "   Presiona Ctrl+C para detener el servidor"
-echo ""
 
 # Start development server
 python manage.py runserver
+
+echo "🚀 Iniciando servidor..."
+echo "   (Presiona Ctrl+C para detenerlo)"

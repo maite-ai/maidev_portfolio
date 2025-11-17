@@ -53,8 +53,8 @@ python manage.py runserver
 ## 📁 Estructura del Proyecto
 
 ```
-mai_portfolio/              # Raíz del repositorio
-├── config/                 # Configuración del proyecto
+maidev_portfolio/              # Raíz del repositorio
+├── mai_portfolio/                 # Configuración del proyecto
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py

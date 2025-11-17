@@ -29,7 +29,7 @@ GITHUB_URL = "https://github.com/usuario"  # Actualizar con URL real
 LINKEDIN_URL = "https://linkedin.com/in/usuario"  # Actualizar con URL real
 
 ## Configuración de Contacto
-CONTACT_EMAIL_ENABLED = False  # Cambiar a True cuando se configure SMTP
+CONTACT_EMAIL_ENABLED = True  # Cambiar a True cuando se configure SMTP
 SMTP_SERVER = ""  # Configurar para envío de emails
 SMTP_PORT = 587
 SMTP_USE_TLS = True
