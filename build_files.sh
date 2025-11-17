@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 # Run migrations
 #echo "🗃️ Executing migrations..."
-#python manage.py migrate
+echo "⚡ Skipping database migrations (portfolio doesn't use database)"
 
 # Collect static files
 echo "📁 Collecting statics files..."
