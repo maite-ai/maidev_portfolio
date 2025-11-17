@@ -15,7 +15,7 @@ def home(request):
         'summary': 'Experienced Python Developer that builds useful company\'s solutions with Python and Data Processing. Strong background in Object Oriented Programming and Web Development.',
         'location': 'Ciudad Autónoma de Buenos Aires, Argentina'
     }
-    return render(request, 'public/home.html', context)
+    return render(request, 'portfolio/home.html', context)
 
 def about(request):
     """About section with detailed information"""
@@ -39,7 +39,7 @@ def about(request):
             {'name': 'English', 'level': 'C1'}
         ]
     }
-    return render(request, 'public/about.html', context)
+    return render(request, 'portfolio/about.html', context)
 
 def experience(request):
     """Experience and education section"""
@@ -94,7 +94,7 @@ def experience(request):
             }
         ]
     }
-    return render(request, 'public/experience.html', context)
+    return render(request, 'portfolio/experience.html', context)
 
 def projects(request):
     """Projects showcase section"""
@@ -118,7 +118,7 @@ def projects(request):
             }
         ]
     }
-    return render(request, 'public/projects.html', context)
+    return render(request, 'portfolio/projects.html', context)
 
 def contact(request):
     """Contact information and form"""
@@ -193,4 +193,4 @@ Enviado desde yosoymai.vercel.app
             'linkedin': 'Perfil de LinkedIn'
         }
     }
-    return render(request, 'public/contact.html', context)
+    return render(request, 'portfolio/contact.html', context)
