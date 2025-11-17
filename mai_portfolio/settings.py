@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = os.environ.get("DEBUG", 'True')
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware', 
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     #'django.contrib.auth.middleware.AuthenticationMiddleware',
