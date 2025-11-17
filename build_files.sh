@@ -4,18 +4,10 @@ echo "🚀 Initializing Mai portfolio - Python Developer"
 echo "=================================================="
 echo ""
 
-# Check if virtual environment exists
-VIRTUALENV="portfolio"
-if [ -d "$HOME/.pyenv/versions/$VIRTUALENV" ]; then
-  echo "The '$VIRTUALENV' virtualenv exists"
-else
-  echo "📦 Creating virtual environment..."
-  pyenv virtualenv 3.12.9 mai-portfolio
-fi
-
 # Activate virtual environment
 echo "⚡ Activating virtual environment..."
-pyenv local portfolio
+python -m venv venv
+source venv/bin/activate
 
 # Build script for Vercel deployment
 echo "Building Django project for Vercel..."
