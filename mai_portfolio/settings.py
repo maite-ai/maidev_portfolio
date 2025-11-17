@@ -121,7 +121,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Email Configuration
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # Para Prod
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
@@ -129,7 +129,7 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', "EMAIL_HOST_USER")
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # Para desarrollo
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # Para desarrollo
 
 
 # Static files (CSS, JavaScript, Images)
