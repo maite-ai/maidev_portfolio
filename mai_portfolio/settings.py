@@ -113,13 +113,13 @@ DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', "EMAIL_HOST_USER")
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
 if DEBUG:
     STATIC_ROOT = BASE_DIR / 'staticfiles'
 else:
     STATIC_ROOT = BASE_DIR / 'staticfiles_build'
-STATICFILES_DIRS = [
-    BASE_DIR / "portfolio" / "static",
-]
+
+STATICFILES_DIRS = [BASE_DIR / "portfolio" / "static"]
 
 # WhiteNoise static files settings for production
 try:
